@@ -1,6 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-var message ='ahoj';
+
+var text;
+var stats=[];
+// [
+//   ['Number of Words: ',''],
+//   ['Shortest Word: ',''],
+//   ['Length of the Shortest Word: ', ''],
+//   ['Longest Word: ',''],
+//   ['Length of the Longest Word: ', ''],
+//   ['The Most Frequently Used Word', ''],
+//   ['The Higest Frequency', ''],
+//   ['The Least Frequently Used Word', ''],
+//   ['The Lowest Frequency', '']
+// ]
 
 class App extends React.Component{
   constructor(props){
@@ -8,7 +21,6 @@ class App extends React.Component{
     this.state={
       input: '',
       text: '',
-      message: message
     }
     this.updateInput = this.updateInput.bind(this)
     this.submit = this.submit.bind(this)
@@ -18,13 +30,23 @@ class App extends React.Component{
     this.setState({
       input: e.target.value
     })
+    stats =[];
+    document.getElementById('result').innerText=''
   }
 
   submit(e){
+    if (typeof text !== 'undefined'){
+      for (const prop of Object.getOwnPropertyNames(text)){
+        delete text[prop]
+      }
+    }
     e.preventDefault();
+    stats = [];
     this.setState({
-      text:this.state.input,
+      text:'loading ...',
+      input: ''
     })
+    document.getElementById('result').innerText ='';
     console.log('fetching');
       // fetch('http://127.0.0.1:5000/',{
       //   method: 'GET',
@@ -63,34 +85,61 @@ class App extends React.Component{
          "Access-Control-Allow-Origin":"*"
       },
       body: JSON.stringify({
-        name:this.state.input
+        'Text: ':this.state.input
       })
     })
     .then(response => response.json())
-    .then(json => console.log(json)
-    // //   this.setState({
-    // //   message: json.name
-    // // })
+    .then(json => 
+     text = json
+      // this.setState({
+      //   text: json['text']
+      // })
+     
+    ).then(()=> this.setState({
+      text: ''
+    })
     )
     .catch(e => console.log('error' + e))
-
+    
+    // document.getElementById('result').innerHTML = stats.map((item)=>(
+    //   <li>{item}</li>))
   }
   render(){
+    if(typeof text !== 'undefined'){
+      console.log(typeof Object.keys(text))
+      stats = [];
+      var keyList = Object.keys(text).map(function(key, index){
+        stats.push([key, text[key]]);
+        console.log(key, text[key])
+      })
+      //stats = keyList.map((key)=>(
+    //     [key, text[key]
+    //   ))
+      console.log(stats[1])
+      // stats[2][1]= text['length of shortest word']
+      // console.log('my stats' + stats[2][1])
+    }
+
   return (
     <div className="App">
       <h1>Word Counter</h1>
       <div>
         <label>
-          Words
+          Fancy some stats on your text?
           <form onSubmit={this.submit}>
-            <input onChange={this.updateInput} value={this.state.input}>
-            </input>
+              <input placeholder=' Get the counter started ... ' onChange={this.updateInput} value={this.state.input}></input>
           </form>
         </label>
       </div>
         <div value={this.state.text}>{this.state.text}
         </div>
-        <div>{this.state.message}</div>
+        <div id='result'>
+          {
+            stats.map((item)=>(
+            <li>{item}</li>
+          ))
+          }
+        </div>
         {/* <Flusk/> */}
     </div>
   );
