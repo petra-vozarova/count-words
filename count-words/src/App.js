@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-
+var message ='ahoj';
 
 class App extends React.Component{
   constructor(props){
@@ -8,7 +8,7 @@ class App extends React.Component{
     this.state={
       input: '',
       text: '',
-      message: {'name':'petra'}
+      message: message
     }
     this.updateInput = this.updateInput.bind(this)
     this.submit = this.submit.bind(this)
@@ -21,31 +21,58 @@ class App extends React.Component{
   }
 
   submit(e){
+    e.preventDefault();
     this.setState({
       text:this.state.input,
     })
     console.log('fetching');
-      fetch('/result',{
-        method: 'GET',
-        cache: "no-cache",
-        mode: 'cors',
-        headers: { 
-          'Content-Type': 'text/plain'
-        },
-        body:'ahoj'
-      }
-      )
-      .then(response => {
-        this.setState({
-          text: response
-        })
-      })
-      // .then(json =>{
+      // fetch('http://127.0.0.1:5000/',{
+      //   method: 'GET',
+      //   // cache: "no-cache",
+      //   // mode: 'cors',
+      //   // headers: { 
+      //   //   'Content-Type': 'application/json'
+      //   // },
+      //   // body:{
+      //   //   'name':'petra'
+      //   // }
+      // }
+      // )
+      // .then(response => {
+      //   response.json()
+      //   console.log('ahoj')
+      // })
+      //  .then(json =>{
       //   this.setState({
       //     text: json
       //   })
       // })
-
+    //   var payload = {
+    //     name: 1,
+    //     b: 2
+    // };
+    
+    // var data = new FormData();
+    // data.append( "json", JSON.stringify( payload ) );
+    fetch('/',{
+      method: "POST",
+      mode:"cors",
+      headers:{
+         "Content-Type":"application/json",
+        "Accept": "application/json",
+         "Access-Control-Allow-Origin":"*"
+      },
+      body: JSON.stringify({
+        name:this.state.input
+      })
+    })
+    .then(response => response.json())
+    .then(json => console.log(json)
+    // //   this.setState({
+    // //   message: json.name
+    // // })
+    )
+    .catch(e => console.log('error' + e))
 
   }
   render(){
@@ -55,7 +82,7 @@ class App extends React.Component{
       <div>
         <label>
           Words
-          <form onSubmit={this.submit} action="http://localhost:5000/result" method="get">
+          <form onSubmit={this.submit}>
             <input onChange={this.updateInput} value={this.state.input}>
             </input>
           </form>
@@ -63,6 +90,7 @@ class App extends React.Component{
       </div>
         <div value={this.state.text}>{this.state.text}
         </div>
+        <div>{this.state.message}</div>
         {/* <Flusk/> */}
     </div>
   );
