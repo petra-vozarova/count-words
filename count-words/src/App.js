@@ -3,17 +3,7 @@ import './App.css';
 
 var text;
 var stats=[];
-// [
-//   ['Number of Words: ',''],
-//   ['Shortest Word: ',''],
-//   ['Length of the Shortest Word: ', ''],
-//   ['Longest Word: ',''],
-//   ['Length of the Longest Word: ', ''],
-//   ['The Most Frequently Used Word', ''],
-//   ['The Higest Frequency', ''],
-//   ['The Least Frequently Used Word', ''],
-//   ['The Lowest Frequency', '']
-// ]
+var word_dictionary = []; 
 
 class App extends React.Component{
   constructor(props){
@@ -26,12 +16,22 @@ class App extends React.Component{
     this.submit = this.submit.bind(this)
   }
 
+  componentDidMount(){
+
+  }
+
+  componentWillUnmount(){
+    const controller = new AbortController();
+    const { signal } = controller;
+    controller.abort();
+  }
+
   updateInput(e){
     this.setState({
       input: e.target.value
     })
-    stats =[];
-    document.getElementById('result').innerText=''
+     stats =[];
+     word_dictionary=[];
   }
 
   submit(e){
@@ -46,36 +46,7 @@ class App extends React.Component{
       text:'loading ...',
       input: ''
     })
-    document.getElementById('result').innerText ='';
-    console.log('fetching');
-      // fetch('http://127.0.0.1:5000/',{
-      //   method: 'GET',
-      //   // cache: "no-cache",
-      //   // mode: 'cors',
-      //   // headers: { 
-      //   //   'Content-Type': 'application/json'
-      //   // },
-      //   // body:{
-      //   //   'name':'petra'
-      //   // }
-      // }
-      // )
-      // .then(response => {
-      //   response.json()
-      //   console.log('ahoj')
-      // })
-      //  .then(json =>{
-      //   this.setState({
-      //     text: json
-      //   })
-      // })
-    //   var payload = {
-    //     name: 1,
-    //     b: 2
-    // };
-    
-    // var data = new FormData();
-    // data.append( "json", JSON.stringify( payload ) );
+  
     fetch('/',{
       method: "POST",
       mode:"cors",
@@ -91,9 +62,6 @@ class App extends React.Component{
     .then(response => response.json())
     .then(json => 
      text = json
-      // this.setState({
-      //   text: json['text']
-      // })
      
     ).then(()=> this.setState({
       text: ''
@@ -101,23 +69,24 @@ class App extends React.Component{
     )
     .catch(e => console.log('error' + e))
     
-    // document.getElementById('result').innerHTML = stats.map((item)=>(
-    //   <li>{item}</li>))
   }
+
   render(){
     if(typeof text !== 'undefined'){
-      console.log(typeof Object.keys(text))
-      stats = [];
+      if (text.hasOwnProperty('Dictionary')){
+        var dictionary = text['Dictionary'];
+        delete text['Dictionary'];
+
+        var make_dictionary = Object.keys(dictionary).map(function(key,index){
+          word_dictionary.push([key + ': ', ' ' + dictionary[key]])
+        });
+        word_dictionary.unshift(['List of Words: ', ' frequency'])
+        console.log(word_dictionary+ 'dictionary')
+      }
       var keyList = Object.keys(text).map(function(key, index){
         stats.push([key, text[key]]);
-        console.log(key, text[key])
       })
-      //stats = keyList.map((key)=>(
-    //     [key, text[key]
-    //   ))
-      console.log(stats[1])
-      // stats[2][1]= text['length of shortest word']
-      // console.log('my stats' + stats[2][1])
+
     }
 
   return (
@@ -126,45 +95,33 @@ class App extends React.Component{
       <div>
         <label>
           Fancy some stats on your text?
+          </label>
           <form onSubmit={this.submit}>
-              <input placeholder=' Get the counter started ... ' onChange={this.updateInput} value={this.state.input}></input>
+            <textarea placeholder=' Get the counter started ... ' onChange={this.updateInput} value={this.state.input}></textarea>
+            <button onClick={this.submit}>Submit</button>
           </form>
-        </label>
+
       </div>
         <div value={this.state.text}>{this.state.text}
         </div>
-        <div id='result'>
+        <div className='stats' id='result'>
           {
             stats.map((item)=>(
             <li>{item}</li>
           ))
           }
         </div>
-        {/* <Flusk/> */}
+        <div  className='stats' id='dictionary'>
+        {
+          word_dictionary.map((item)=>(
+          <li>{item}</li>
+          ))
+        } 
+        </div>
     </div>
   );
 }
 }
 
-// function Flusk(){
-//   const [name, setName] = useState([])
-//   useEffect(()=>{
-//     fetch('/result',{
-//       method: "POST",
-//       cache: "no-cache",
-//       headers:{
-//         "content_type": "application/json"
-//       },
-//       body:JSON.stringify(this.state.value)
-//     }
-//     )
-//     .then(response => {
-//       return response.json()
-//     })
-//     }, []);
-//     console.log(name)
-
-//   return <div>name</div>;
-// }
 
 export default App;
