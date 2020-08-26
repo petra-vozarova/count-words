@@ -22,7 +22,7 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "proxy":"http://127.0.0.1:5000/",
+  "proxy":"https://vozarova-word-counter.herokuapp.com/",
   "name": "client",
   "version": "0.1.0",
   "private": true,
