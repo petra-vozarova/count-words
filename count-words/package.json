@@ -1,5 +1,5 @@
 {
-  "homepage": "https://git.heroku.com/vozarova-word-counter.git",
+  "homepage": "https://github.com/petra-vozarova/count-words",
   "name": "count-words",
   "version": "0.1.0",
   "private": true,
