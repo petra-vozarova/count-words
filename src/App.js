@@ -47,7 +47,7 @@ class App extends React.Component{
       input: ''
     })
   
-    fetch('/',{
+    fetch('https://vozarova-word-counter.herokuapp.com/',{
       method: "POST",
       mode:"cors",
       headers:{
