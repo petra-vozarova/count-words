@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/count-words/static/css/main.56f6060f.chunk.css",
-    "main.js": "/count-words/static/js/main.abee7647.chunk.js",
-    "main.js.map": "/count-words/static/js/main.abee7647.chunk.js.map",
+    "main.js": "/count-words/static/js/main.5e423d30.chunk.js",
+    "main.js.map": "/count-words/static/js/main.5e423d30.chunk.js.map",
     "runtime-main.js": "/count-words/static/js/runtime-main.0fb10be5.js",
     "runtime-main.js.map": "/count-words/static/js/runtime-main.0fb10be5.js.map",
     "static/css/2.0feabbbc.chunk.css": "/count-words/static/css/2.0feabbbc.chunk.css",
     "static/js/2.7ff4ac8a.chunk.js": "/count-words/static/js/2.7ff4ac8a.chunk.js",
     "static/js/2.7ff4ac8a.chunk.js.map": "/count-words/static/js/2.7ff4ac8a.chunk.js.map",
     "index.html": "/count-words/index.html",
-    "precache-manifest.40c93c4fc74ddf938891a02fd811e001.js": "/count-words/precache-manifest.40c93c4fc74ddf938891a02fd811e001.js",
+    "precache-manifest.72d9c64c76f70e9067aa6256deb7cd83.js": "/count-words/precache-manifest.72d9c64c76f70e9067aa6256deb7cd83.js",
     "service-worker.js": "/count-words/service-worker.js",
     "static/css/2.0feabbbc.chunk.css.map": "/count-words/static/css/2.0feabbbc.chunk.css.map",
     "static/css/main.56f6060f.chunk.css.map": "/count-words/static/css/main.56f6060f.chunk.css.map",
@@ -21,6 +21,6 @@
     "static/css/2.0feabbbc.chunk.css",
     "static/js/2.7ff4ac8a.chunk.js",
     "static/css/main.56f6060f.chunk.css",
-    "static/js/main.abee7647.chunk.js"
+    "static/js/main.5e423d30.chunk.js"
   ]
 }
