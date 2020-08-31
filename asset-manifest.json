@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/petra-vozarova/count-words/static/css/main.484342a1.chunk.css",
+    "main.js": "/petra-vozarova/count-words/static/js/main.38c2f9a2.chunk.js",
+    "main.js.map": "/petra-vozarova/count-words/static/js/main.38c2f9a2.chunk.js.map",
+    "runtime-main.js": "/petra-vozarova/count-words/static/js/runtime-main.7c76b7cb.js",
+    "runtime-main.js.map": "/petra-vozarova/count-words/static/js/runtime-main.7c76b7cb.js.map",
+    "static/css/2.36a22149.chunk.css": "/petra-vozarova/count-words/static/css/2.36a22149.chunk.css",
+    "static/js/2.7ff4ac8a.chunk.js": "/petra-vozarova/count-words/static/js/2.7ff4ac8a.chunk.js",
+    "static/js/2.7ff4ac8a.chunk.js.map": "/petra-vozarova/count-words/static/js/2.7ff4ac8a.chunk.js.map",
+    "index.html": "/petra-vozarova/count-words/index.html",
+    "precache-manifest.8a2f04e50ab457064c526509d7aeeb84.js": "/petra-vozarova/count-words/precache-manifest.8a2f04e50ab457064c526509d7aeeb84.js",
+    "service-worker.js": "/petra-vozarova/count-words/service-worker.js",
+    "static/css/2.36a22149.chunk.css.map": "/petra-vozarova/count-words/static/css/2.36a22149.chunk.css.map",
+    "static/css/main.484342a1.chunk.css.map": "/petra-vozarova/count-words/static/css/main.484342a1.chunk.css.map",
+    "static/js/2.7ff4ac8a.chunk.js.LICENSE.txt": "/petra-vozarova/count-words/static/js/2.7ff4ac8a.chunk.js.LICENSE.txt",
+    "static/media/semantic.min.css": "/petra-vozarova/count-words/static/media/outline-icons.ef60a4f6.woff"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7c76b7cb.js",
+    "static/css/2.36a22149.chunk.css",
+    "static/js/2.7ff4ac8a.chunk.js",
+    "static/css/main.484342a1.chunk.css",
+    "static/js/main.38c2f9a2.chunk.js"
+  ]
+}
