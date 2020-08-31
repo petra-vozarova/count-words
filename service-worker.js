@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/petra-vozarova/count-words/precache-manifest.8a2f04e50ab457064c526509d7aeeb84.js"
+  "/petra-vozarova/count-words/precache-manifest.bb7a78cc42311d771be43a674f22067f.js"
 );
 
 self.addEventListener('message', (event) => {

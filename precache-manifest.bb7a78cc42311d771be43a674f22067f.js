@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "76694a97389507b90df60d85f9c86f32",
+    "revision": "48cec3c3faf7952a14f648069d2806e4",
     "url": "/petra-vozarova/count-words/index.html"
   },
   {
