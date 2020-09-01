@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "181ca438089f099105be58cc80f034f3",
+    "revision": "99466d1a65c49e0921c186e018938810",
     "url": "/count-words/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/count-words/static/css/2.0feabbbc.chunk.css"
   },
   {
-    "revision": "cdf23d7611331f828715",
-    "url": "/count-words/static/css/main.2831e5ce.chunk.css"
+    "revision": "faf9d7b68be0fedc4603",
+    "url": "/count-words/static/css/main.661238cf.chunk.css"
   },
   {
     "revision": "73130fdea86085d24cee",
@@ -20,7 +20,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/count-words/static/js/2.7ff4ac8a.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "cdf23d7611331f828715",
+    "revision": "faf9d7b68be0fedc4603",
     "url": "/count-words/static/js/main.07f04cf8.chunk.js"
   },
   {
