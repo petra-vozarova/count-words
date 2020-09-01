@@ -47,6 +47,7 @@ textarea{
   border: solid 1px rgb(68, 61, 61);
   margin: auto;
   color: seashell;
+  padding: 1em;
 }
 ::placeholder{
   color: seashell;
