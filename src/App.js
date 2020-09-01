@@ -14,10 +14,7 @@ class App extends React.Component{
     }
     this.updateInput = this.updateInput.bind(this)
     this.submit = this.submit.bind(this)
-  }
-
-  componentDidMount(){
-
+    this.showDictionary = this.showDictionary.bind(this)
   }
 
   componentWillUnmount(){
@@ -28,10 +25,13 @@ class App extends React.Component{
 
   updateInput(e){
     this.setState({
-      input: e.target.value
+      input: e.target.value,
     })
+    document.getElementById('dictionary').setAttribute("style", "opacity:0");
+    document.getElementById('returnedStats').setAttribute("style", "opacity:0");
      stats =[];
      word_dictionary=[];
+
   }
 
   submit(e){
@@ -40,12 +40,13 @@ class App extends React.Component{
         delete text[prop]
       }
     }
+    
     e.preventDefault();
     stats = [];
     this.setState({
       text:'loading ...',
       input: ''
-    })
+    });
   
     fetch('https://vozarova-word-counter.herokuapp.com/',{
       method: "POST",
@@ -61,14 +62,17 @@ class App extends React.Component{
     })
     .then(response => response.json())
     .then(json => 
-     text = json
-     
+      text = json
     ).then(()=> this.setState({
       text: ''
-    })
-    )
-    .catch(e => console.log('error' + e))
-    
+      })
+    ).catch(e => console.log('error' + e))  
+  }
+
+  showDictionary(){
+    if (word_dictionary.length >= 1) {
+      document.getElementById('dictionary').setAttribute("style","opacity:1")
+    }
   }
 
   render(){
@@ -76,17 +80,16 @@ class App extends React.Component{
       if (text.hasOwnProperty('Dictionary')){
         var dictionary = text['Dictionary'];
         delete text['Dictionary'];
-
         var make_dictionary = Object.keys(dictionary).map(function(key,index){
           word_dictionary.push([key + ': ', ' ' + dictionary[key]])
         });
-        word_dictionary.unshift(['List of Words: ', ' frequency'])
-        console.log(word_dictionary+ 'dictionary')
+        word_dictionary.unshift(['List of Words: ', ' frequency']);
+        //console.log(word_dictionary+ 'dictionary');
+        document.getElementById('returnedStats').setAttribute("style","opacity:1");
       }
       var keyList = Object.keys(text).map(function(key, index){
         stats.push([key, text[key]]);
-      })
-
+      });
     }
 
   return (
@@ -102,6 +105,7 @@ class App extends React.Component{
           </form>
 
       </div>
+      <div className='flaskResponse' id='returnedStats'>
         <div value={this.state.text}>{this.state.text}
         </div>
         <div className='stats' id='result'>
@@ -111,6 +115,7 @@ class App extends React.Component{
           ))
           }
         </div>
+        <button onClick={this.showDictionary}>List of Words</button>
         <div  className='stats' id='dictionary'>
         {
           word_dictionary.map((item)=>(
@@ -118,6 +123,7 @@ class App extends React.Component{
           ))
         } 
         </div>
+      </div>
     </div>
   );
 }

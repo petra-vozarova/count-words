@@ -1,6 +1,10 @@
+body{
+  height: auto;
+  width: 100%;
+  min-height: 100vh;
+}
 
 .App,#root{
-  background-color: chocolate;
   font-size: 1em;
   height:auto;
   min-height:100%;
@@ -8,7 +12,7 @@
   line-height: 1.8em;
 }
 .App h1{
-  color:whitesmoke;
+  color:rgb(68, 61, 61);
   font-weight: bold;
   padding: 0.5em;
   font-size: 4em;
@@ -34,56 +38,80 @@ form{
 
 
 textarea{
-  background-color:#C0C0C0;
+  background-color:rgb(68, 61, 61, 0.8);
   height: 10em;
   overflow-y: scroll;
   text-align: start;
   width: 100%;
   border-radius: 3%;
-  border: solid 1px white;
+  border: solid 1px rgb(68, 61, 61);
   margin: auto;
+  color: seashell;
+}
+::placeholder{
+  color: seashell;
 }
 
 button{
-  border: solid 1px white;
-  background-color:#C0C0C0;
+  border: solid 1px rgb(68, 61, 61);
+  background-color:#eee;
   width: 30%;
   align-self: flex-end;
   cursor: pointer;
   border-radius: 3%;
   height: 50px;
-  font-size: 1.3em;
 }
 button:hover{
-  background-color: rgba(47, 223, 114, 0.835);
+  background-color: rgb(68, 61, 61, 0.8);
+  color: seashell;
   transition: 0.8s ease;
+}
+
+#returnedStats{
+  opacity: 0;
+}
+
+.flaskResponse{
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  margin: auto;
+  font-size: 1.3em;
 }
 
 .stats{
   height: auto;
-  font-weight: 600;
+  font-weight: 500;
+  margin-bottom: 2em;
 }
 
 #dictionary{
-  margin-top: 2em;
-  color: white;
+  margin: 2em auto 0  auto;
+  color: seashell;
+  background-color:rgb(68, 61, 61, 0.8);
+  width: 100%;
+  border: solid 1px black;
+  padding: 2em 0;
+  border-radius: 3%;
+  opacity: 0;
 }
 
 #dictionary li{
-  border-bottom: solid 1.5px black;
+  color: white;
+  border-bottom: solid 1.5px seashell;
 }
 
 li{
-  width: 50%;
+  width: 80%;
   list-style-type: none;
   font-size: 1.3em;
   line-height: 2em;
-  border-bottom: solid 1px white;
-  margin: auto;
+  border-bottom: solid 1px rgb(68, 61, 61);
+  margin: auto 0 auto 2em;
   text-align: start;
 }
 @media screen and (min-width: 1100px){
-  form{
+  form, .flaskResponse{
     width:40%;
   }
 }
