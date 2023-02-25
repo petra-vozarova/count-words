@@ -1,0 +1,42 @@
+form{
+  padding-bottom: 1em;
+  padding-top: 1em;
+  justify-items: flex-start;
+  width: 70%;
+  margin: 0.5em auto;
+  font-size: 1.5em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  max-width:650px;
+  
+  #result{
+    margin-bottom: 10px;
+  }
+    
+  label{
+    font-size: 1.3em;
+    margin-bottom: 20px;
+    color:rgb(68, 61, 61);
+  }
+
+  textarea{
+    background-color:rgb(68, 61, 61, 0.8);
+    height: 10em;
+    overflow-y: scroll;
+    text-align: start;
+    width: 100%;
+    border-radius: 1%;
+    border: solid 1px rgb(68, 61, 61);
+    margin: auto;
+    color: seashell;
+    padding: 1em;
+  }
+  ::placeholder{
+    color: seashell;
+    font-size: 0.8em;
+    font-style: italic;
+  }
+}
+  
+  

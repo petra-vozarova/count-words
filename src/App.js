@@ -1,9 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import './App.css';
+import React from 'react';
+
+import TextStatistics from './components/text_statistics';
+import Dictionary from './components/dictionary_component';
+import Form from './components/form_component';
+
+import './App.scss';
 
 var text;
 var stats=[];
-var word_dictionary = []; 
+export var word_dictionary = []; 
 
 class App extends React.Component{
   constructor(props){
@@ -17,21 +22,14 @@ class App extends React.Component{
     this.showDictionary = this.showDictionary.bind(this)
   }
 
-  componentWillUnmount(){
-    const controller = new AbortController();
-    const { signal } = controller;
-    controller.abort();
-  }
-
   updateInput(e){
     this.setState({
       input: e.target.value,
     })
     document.getElementById('dictionary').setAttribute("style", "opacity:0");
     document.getElementById('returnedStats').setAttribute("style", "opacity:0");
-     stats =[];
-     word_dictionary=[];
-
+    stats =[];
+    word_dictionary=[];
   }
 
   submit(e){
@@ -47,14 +45,15 @@ class App extends React.Component{
       text:'loading ...',
       input: ''
     });
-  
-    fetch('https://vozarova-word-counter.herokuapp.com/',{
+
+    // http://3.73.161.251:5000/
+    fetch('/',{
       method: "POST",
       mode:"cors",
       headers:{
-         "Content-Type":"application/json",
+        "Content-Type":"application/json",
         "Accept": "application/json",
-         "Access-Control-Allow-Origin":"*"
+        "Access-Control-Allow-Origin":"*"
       },
       body: JSON.stringify({
         'Text: ':this.state.input
@@ -66,7 +65,7 @@ class App extends React.Component{
     ).then(()=> this.setState({
       text: ''
       })
-    ).catch(e => console.log('error' + e))  
+    ).catch(e => console.log('error: ' + e))  
   }
 
   showDictionary(){
@@ -76,58 +75,47 @@ class App extends React.Component{
   }
 
   render(){
+    console.log('rendering')
     if(typeof text !== 'undefined'){
       if (text.hasOwnProperty('Dictionary')){
         var dictionary = text['Dictionary'];
         delete text['Dictionary'];
-        var make_dictionary = Object.keys(dictionary).map(function(key,index){
+        Object.keys(dictionary).map(function(key){
           word_dictionary.push([key + ': ', ' ' + dictionary[key]])
         });
         word_dictionary.unshift(['List of Words: ', ' frequency']);
-        //console.log(word_dictionary+ 'dictionary');
         document.getElementById('returnedStats').setAttribute("style","opacity:1");
       }
-      var keyList = Object.keys(text).map(function(key, index){
+      Object.keys(text).map(function(key){
         stats.push([key, text[key]]);
       });
     }
 
   return (
     <div className="App">
-      <h1>Word Counter</h1>
-      <div>
-        <label>
-          Fancy some stats on your text?
-          </label>
-          <form onSubmit={this.submit}>
-            <textarea placeholder=' Get the counter started ... ' onChange={this.updateInput} value={this.state.input}></textarea>
-            <button onClick={this.submit}>Submit</button>
-          </form>
+      <h1>Text Processing Tool</h1>
 
-      </div>
+      <Form 
+        submit={this.submit}
+         updateInput={this.updateInput}
+         inputValue={this.state.input}
+      />
+
       <div className='flaskResponse' id='returnedStats'>
-        <div value={this.state.text}>{this.state.text}
-        </div>
-        <div className='stats' id='result'>
-          {
-            stats.map((item)=>(
-            <li>{item}</li>
-          ))
-          }
-        </div>
-        <button onClick={this.showDictionary}>List of Words</button>
-        <div  className='stats' id='dictionary'>
-        {
-          word_dictionary.map((item)=>(
-          <li>{item}</li>
-          ))
-        } 
-        </div>
+        { 
+          stats.map((item, index) => {
+            return (
+              <TextStatistics key={index} title={item[0]} stats={item[1]}/>
+            )
+          })
+        }
+        <button className='dictionaryButton' onClick={this.showDictionary}>Show Words</button>
+        <Dictionary />
       </div>
+
     </div>
   );
-}
-}
+}}
 
 
 export default App;

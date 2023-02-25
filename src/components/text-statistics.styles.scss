@@ -1,0 +1,23 @@
+.statsLineContainer{
+    max-width:650px;
+    display: flex;
+    flex-direction: row;
+    border-bottom: solid 1px rgb(68, 61, 61);
+    color:rgb(68, 61, 61, 0.9);
+    span{
+        width:40%;
+        line-height: 2em;
+
+    }
+    .statsTitle{
+        font-size: 1.2em;
+        font-weight:700;
+        width: auto;
+    }
+    .statsText{
+        display: flex;
+        justify-self: left;
+        padding-left: 10px;
+        font-size: 1.2em;
+    }
+}

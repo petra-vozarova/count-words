@@ -1,0 +1,21 @@
+#dictionary{
+    margin: 1em auto 1em auto;
+    color: seashell;
+    background-color:rgb(68, 61, 61, 0.8);
+    width: 100%;
+    border: solid 1px black;
+    padding: 1em 0;
+    border-radius: 1%;
+    opacity: 0;
+
+    li{
+      color: white;
+      border-bottom: solid 1.5px seashell;
+      width: auto;
+      list-style-type: none;
+      font-size: 1.2em;
+      line-height: 2em;
+      margin: auto 0.5em;
+      text-align: start
+    }
+}
